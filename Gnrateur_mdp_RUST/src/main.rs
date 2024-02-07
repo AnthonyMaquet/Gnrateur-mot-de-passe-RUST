@@ -3,7 +3,12 @@ use rand::Rng;
 use std::io;
 
 // Fonction pour générer un mot de passe aléatoire
-fn generate_password(length: usize, use_uppercase: bool, use_special_chars: bool, use_numbers: bool) -> String {
+fn generate_password(
+    length: usize,
+    use_uppercase: bool,
+    use_special_chars: bool,
+    use_numbers: bool,
+) -> String {
     // Définir les caractères utilisables dans le mot de passe
     let mut charset = "abcdefghijklmnopqrstuvwxyz".to_string();
     if use_uppercase {
@@ -39,13 +44,21 @@ fn main() {
     // Demander la longueur du mot de passe à l'utilisateur
     let length: usize;
     loop {
-        println!("Entrez la longueur du mot de passe (minimum {} caractères) : ", min_length);
+        println!(
+            "Entrez la longueur du mot de passe (minimum {} caractères) : ",
+            min_length
+        );
         let mut input = String::new();
-        io::stdin().read_line(&mut input).expect("Failed to read line");
+        io::stdin()
+            .read_line(&mut input)
+            .expect("Failed to read line");
         length = match input.trim().parse() {
             Ok(num) if num >= min_length => num,
             _ => {
-                println!("Veuillez entrer un entier positif supérieur ou égal à {}.", min_length);
+                println!(
+                    "Veuillez entrer un entier positif supérieur ou égal à {}.",
+                    min_length
+                );
                 continue;
             }
         };
@@ -55,19 +68,25 @@ fn main() {
     // Demander à l'utilisateur s'il veut inclure des majuscules
     println!("Ajouter des majuscules ? (o/n) : ");
     let mut input = String::new();
-    io::stdin().read_line(&mut input).expect("Failed to read line");
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Failed to read line");
     let use_uppercase = input.trim().to_lowercase() == "o";
 
     // Demander à l'utilisateur s'il veut inclure des caractères spéciaux
     println!("Ajouter des caractères spéciaux ? (o/n) : ");
     let mut input = String::new();
-    io::stdin().read_line(&mut input).expect("Failed to read line");
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Failed to read line");
     let use_special_chars = input.trim().to_lowercase() == "o";
 
     // Demander à l'utilisateur s'il veut inclure des chiffres
     println!("Ajouter des chiffres ? (o/n) : ");
     let mut input = String::new();
-    io::stdin().read_line(&mut input).expect("Failed to read line");
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Failed to read line");
     let use_numbers = input.trim().to_lowercase() == "o";
 
     // Générer le mot de passe
