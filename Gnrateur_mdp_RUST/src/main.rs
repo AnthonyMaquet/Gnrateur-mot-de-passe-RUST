@@ -2,7 +2,8 @@
 //    println!("Hello, world!");
 //}
 //
-use rand::Rng;
+//Import des bibliothèques
+use rand::Rng; 
 
 fn generate_password(length: usize) -> String {
     // Définir les caractères utilisables dans le mot de passe
