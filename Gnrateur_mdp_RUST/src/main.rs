@@ -1,8 +1,4 @@
-//fn main() {
-//    println!("Hello, world!");
-//}
-//
-//Import des bibliothèques
+// Import des librairies
 use rand::Rng; 
 
 fn generate_password(length: usize) -> String {
